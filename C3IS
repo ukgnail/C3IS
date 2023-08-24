@@ -1,0 +1,120 @@
+// Load the shapefile as a FeatureCollection
+var parcel = ee.FeatureCollection(table);
+
+// Define the style for the layer
+var layerStyle = {
+  fillColor: 'red',// Set the fill color to opaque white
+  color: 'red',       // Set the border color to red
+  width: 5            // Set the border width
+};
+
+// Add the styled layer to the map
+Map.addLayer(parcel, layerStyle, 'Parcel Layer (Davidson County, Tennessee)');
+
+
+
+
+
+
+
+// Создание пользовательской панели управления
+var customControl = ui.Panel({
+  style: {
+    position: 'bottom-left',
+    padding: '10px'
+  }
+});
+
+// Создание кнопки
+var predictionButton = ui.Label({
+  value: 'Prediction model (in progress)',
+  style: {
+   fontWeight: 'bold',
+   fontSize: '18px',
+   margin: '0 0 4px 0',
+  padding: '2'
+   }
+}).setUrl('https://ukgnail.users.earthengine.app/view/apsu-soil-erosion');
+
+// Создание кнопки
+var predictionButtonn = ui.Label({
+  value: 'Climate Hazard Analysis Tool',
+  style: {
+   fontWeight: 'bold',
+   fontSize: '18px',
+   margin: '0 0 4px 0',
+  padding: '2'
+   }
+}).setUrl('https://ukgnail.users.earthengine.app/view/apsu-soil-erosion');
+
+
+https://ee-ukgnail.projects.earthengine.app/view/c3is-2
+
+
+var prediction = ui.Label({
+  value: 'Change the map layer on Digital Twins (in progress) ',
+  style: {
+   fontWeight: 'bold',
+   fontSize: '18px',
+   margin: '0 0 4px 0',
+  padding: '2'
+   }
+}).setUrl('https://earth.google.com/web/@36.16278698,-86.78013844,311.52382384a,451.6727722d,35y,0h,60t,0r/data=KAI');
+// Добавление кнопки на пользовательскую панель управления
+customControl.add(predictionButton);
+customControl.add(prediction);
+customControl.add(predictionButtonn);
+
+// Добавление пользовательской панели управления на карту
+Map.add(customControl);
+//var title_label = ui.Label({
+//  value: "Nail Beisekenov",
+//  style: {
+//    fontWeight: 'bold',
+//    fontSize: '18px',
+//    margin: '0 0 4px 0',
+//    padding: '2'
+//    }
+//}).setUrl('https://www.linkedin.com/in/nail-beisekenov/');
+
+
+// Map.add(title_label);
+
+// Создание панели с текстовым блоком
+var textPanel = ui.Panel({
+  style: {
+    position: 'top-right',
+    width: '250px',
+    height: '300px',
+    padding: '8px'
+  }
+});
+
+// Создание метки с текстом
+var text = ui.Label({
+  value: '------ Version 1.01 ------ Check out all available datasets:    Land Use Cover ➜ ESA World Cover 2020    Population Count ➜ Global Human Settlement Population Grid 2015    Urban Density ➜ Urban ratio derived from World Cover    Summer Day Temperature ➜ MODIS day Land Surface Temperature     Summer Night Temperature ➜ MODIS night Land Surface Temperature    and more! Google Earth Engine is a cloud-based platform developed by Google that provides access to vast amounts of geospatial data, as well as tools to analyse and process that data to study environmental change, monitor climate, wildfires, agriculture and other geographical phenomena on planet Earth.',
+  style: {
+    fontSize: '16px',
+    fontWeight: 'bold',
+   textAlign: 'center' 
+  }
+});
+
+// Добавление текстовой метки на панель
+textPanel.add(text);
+
+// Добавление панели на карту
+Map.add(textPanel);
+
+
+
+var utils = require('users/pinkychow1010/WB_IntraUrban:explorer_utils');
+
+var app = require('users/pinkychow1010/WB_IntraUrban:explorer_interface');
+
+
+
+// set up app
+app.data_explorer("Community Climate Change Impact Service (C3IS)");
+
+// add welcome panel with instruc
